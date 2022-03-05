@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div>
       <Home/>
-      <Button>Login</Button>
+      {/* <Button>Login</Button> */}
       {/* <p>Hello Pizza  World </p> */}
     </div>
   )
