@@ -22,15 +22,15 @@ let MovieList = ({Movies}) => {
                 return(
                     
                     <div key={Movie.id}>
-                    <Card   style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={Movie.image} />
+                    <Card   style={{ width: '18rem', textAlign: 'center', marginBottom: '20px' }}>
+                    <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${Movie.poster_path}`} />
                     <Card.Body>
                       <Card.Title> Title: {Movie.title}</Card.Title>
-                      {/* <Card.Img>{Movie.poster_path}</Card.Img> */}
-                      <Card.Title>overview:{Movie.overview}</Card.Title>
-                      <Card.Text>
-                        {Movie.summary}
-                      </Card.Text>
+                      <br></br>
+                    Release Date:{Movie.release_date}<br></br>
+                    <Card.Text>
+                        Overview:{Movie.overview}
+                    </Card.Text>
                       <Button variant="primary" onClick={() => handelChosenMovie(Movie)}>Add to Fav</Button>
                     </Card.Body>
                   </Card>
