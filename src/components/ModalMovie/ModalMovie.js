@@ -13,7 +13,10 @@ export default function ModalMovie({ Movie, show, handleClose }) {
 }
 
 async function addToFavList(Movie, comment){
-  const url = `${process.env.REACT_APP_SERVER}/addMovie`
+
+  const url = `${process.env.REACT_APP_SERVER}/getMovie`
+
+
   const data = {
     title : Movie.title,
     release_date : Movie.release_date,
