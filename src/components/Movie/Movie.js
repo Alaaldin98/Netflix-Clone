@@ -4,7 +4,7 @@
 // import ModalMovie from '../ModalMovie/ModalMovie';
 // import {useState} from 'react';
 
-// let MovieList = ({Movies}) => {
+// let Amovie = ({Movies}) => {
 //     const [chosenMovie, setChosenMovie] = useState()
 //     const [show, setShow] = useState(false);
 
@@ -46,4 +46,4 @@
 //     )
 // };
 
-// export default MovieList;
+// export default Amovie;

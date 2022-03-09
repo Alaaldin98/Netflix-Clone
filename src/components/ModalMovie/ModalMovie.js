@@ -5,11 +5,11 @@ import { Form } from "react-bootstrap";
 
 export default function ModalMovie({ Movie, show, handleClose }) {
   return (
+    <>
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{Movie.title}</Modal.Title>
       </Modal.Header>
-      {/* <Modal.Img>{Movie.poster_path}</Modal.Img> */}
       <Modal.Body>{Movie.overview}</Modal.Body>
       <Modal.Footer>
         <Form>
@@ -29,5 +29,6 @@ export default function ModalMovie({ Movie, show, handleClose }) {
         </Button>
       </Modal.Footer>
     </Modal>
+    </>
   );
 }
