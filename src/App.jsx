@@ -1,14 +1,19 @@
-// import Button from 'react-bootstrap/Button';
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home/Home';
+import FavList from './components/FavList/FavList';
 export default function App() {
 
   return (
-    <div>
-      <Home/>
-      {/* <Button>Login</Button> */}
-      {/* <p>Hello Pizza  World </p> */}
-    </div>
+<>
+    <Navbar />
+    <Routes>
+      {/* <Navbar/> */}
+    <Route path="/" element={<Home />} />
+    <Route path="/fav" element={<FavList />} />
+  </Routes>
+  </>
   )
 }

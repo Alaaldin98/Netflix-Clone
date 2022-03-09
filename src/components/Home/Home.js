@@ -2,6 +2,7 @@ import Navbar from '../Navbar/Navbar';
 import React from 'react';
 import { useState, useEffect } from "react";
 import MovieList from '../MovieList/MovieList';
+// import Navbar from '../Navbar/Navbar'
 
 
 export default function Home(){
@@ -23,7 +24,7 @@ export default function Home(){
         <>
         <Navbar/>
         <h1>Welcome to Netflix</h1>
-        {/* <Header /> */}
+        {/* <Navbar /> */}
         <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between", height:"100px"}}>
         {Movies && <MovieList Movies={Movies}/>}
         </div>
