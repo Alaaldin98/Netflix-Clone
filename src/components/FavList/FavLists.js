@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar.js";
 export default function FavLists() {
     const [favMovies, setFavMovie] = useState([]) 
     async function getFavMovie() {
-        const response = await fetch(`${process.env.REACT_APP_SERVER}/getMovies`)
+        const response = await fetch(`${process.env.REACT_APP_SERVER}/favMovies`)
         const data = await response.json();
         setFavMovie(data)
     }
@@ -12,6 +12,7 @@ export default function FavLists() {
         getFavMovie();
 
     }, [])
+    console.log(favMovies)
     return (
         <>
             <h1>FavMovies Page</h1>
