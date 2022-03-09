@@ -24,7 +24,6 @@ export default function Home(){
         <>
         <Navbar/>
         <h1>Welcome to Netflix</h1>
-        {/* <Navbar /> */}
         <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between", height:"100px"}}>
         {Movies && <MovieList Movies={Movies}/>}
         </div>
