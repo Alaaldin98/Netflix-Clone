@@ -10,7 +10,6 @@ export default function App() {
 <>
     <Navbar />
     <Routes>
-      {/* <Navbar/> */}
     <Route path="/" element={<Home />} />
     <Route path="/fav" element={<FavList />} />
   </Routes>

@@ -1,39 +1,59 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import swal from 'sweetalert';
-export default function FavList({ data, getFavMovie }) {
+import { useState, useEffect } from "react";
+import swal from "sweetalert";
+
+export default function Favlist() {
+    const [loading, setLoading] = useState(false);
+
+    const [movies, setMovies] = useState(null);
+    async function getData() {
+        let response = await fetch(`${process.env.REACT_APP_SERVER}/getMovie`);
+        let data = await response.json();
+        console.log(data);
+        setMovies(data);
+
+    };
+    useEffect(() => {
+        getData();
+
+    }, []);
     function handelDelete(id) {
-      swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                swal("Poof! Your imaginary file has been deleted!", {
-                    icon: "success",
-                });
-                const url = `${process.env.REACT_APP_SERVER}/deleteMovies/${id}`;
-                fetch(url, { method: "DELETE" }).then(() => {
-                    getFavMovie();
-                });
-            } else {
-                swal("Your imaginary file is safe!");
-            }
+        const url = `${process.env.REACT_APP_SERVER}/getMovie/deleteFavMovie/${id}`;
+        const response = fetch(url, {
+            method: "DELETE", // *GET, POST, PUT, DELETE, etc
+        }).then(() => {
+            getData();
         });
     }
+    if (loading) {
+        return <p>Data is loading...</p>;
+      }
+
     return (
         <div>
-            <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/original${data.poster_path}`} />
-                <Card.Body>
-                    <Card.Title> Title: {data.title}</Card.Title>
-                    <Card.Text> Your Comment: {data.comments}</Card.Text>
-                    <Button variant="danger" onClick={() => handelDelete(data.id)}>Delete</Button>
-                </Card.Body>
-            </Card>
-        </div>
+
+            {movies && movies.data.map((movies)=>{
+        return (<Card style={{ width: "18rem" }}>
+            <Card.Body>
+                <Card.Title> Title: {movies.title}</Card.Title>
+                <Card.Title>Comment :{movies.comment}</Card.Title>
+                <Card.Text style={{ overflowY: "scroll", maxHeight: "100px" }}>
+                    {movies.summary}
+                </Card.Text>
+                <Button onClick={() => handelDelete(movies.id)} variant="primary">
+                    Delete
+                </Button>
+                <Button onClick={() => handelDelete(movies.id)} variant="primary">
+                   Update
+                </Button>
+            </Card.Body>
+        </Card >)
+    })
+    } 
+    
+            </div >
+
 
     );
 }
