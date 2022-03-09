@@ -38,12 +38,14 @@ console.log(response);
 
 
   return (
+    <>
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{ele.title}</Modal.Title>
       </Modal.Header>
-      {/* <Modal.Img>{Movie.poster_path}</Modal.Img> */}
-      <Modal.Body>{ele.overview}</Modal.Body>
+
+      <Modal.Body>{Movie.overview}</Modal.Body>
+
       <Modal.Footer>
         <Form onSubmit={handleFormSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -62,5 +64,6 @@ console.log(response);
         </Button>
       </Modal.Footer>
     </Modal>
+    </>
   );
 }

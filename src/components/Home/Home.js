@@ -1,3 +1,4 @@
+import Navbar from '../Navbar/Navbar';
 import React from 'react';
 import { useState, useEffect } from "react";
 import MovieList from '../MovieList/MovieList';
@@ -21,6 +22,7 @@ export default function Home(){
     },[]);
     return(
         <>
+        <Navbar/>
         <h1>Welcome to Netflix</h1>
         {/* <Navbar /> */}
         <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between", height:"100px"}}>
