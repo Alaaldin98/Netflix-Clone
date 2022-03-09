@@ -4,18 +4,16 @@ import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import swal from 'sweetalert';
 
-export default function ModalMovie({ ele, show, handleClose }) {
+export default function ModalMovie({ Movie, show, handleClose }) {
 
   function handleFormSubmit(e) {
     e.preventDefault();
     let comment = e.target.comment.value;
-    // To send a POST request to save the recipe in our database as favorite recipe
-    addToFavList(ele, comment)
+    addToFavList(Movie, comment)
 }
 
 async function addToFavList(Movie, comment){
-  const url = `${process.env.REACT_APP_SERVER}/addFavMovie`
-  // This should match the required data in the server
+  const url = `${process.env.REACT_APP_SERVER}/addMovie`
   const data = {
     title : Movie.title,
     release_date : Movie.release_date,
@@ -27,10 +25,9 @@ const response = await fetch(url, {
   method: 'POST', // *GET, POST, PUT, DELETE, etc.
   headers: {
     'Content-Type': 'application/json'
-    // 'Content-Type': 'application/x-www-form-urlencoded',
   },
-  body: JSON.stringify(data) // body data type must match "Content-Type" header
-});
+  body: JSON.stringify(data)
+},[]);
 swal("Favorite Movie", "You added a new Movie", "success");
 handleClose();
 console.log(response);
@@ -41,7 +38,7 @@ console.log(response);
     <>
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>{ele.title}</Modal.Title>
+        <Modal.Title>{Movie.title}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>{Movie.overview}</Modal.Body>
